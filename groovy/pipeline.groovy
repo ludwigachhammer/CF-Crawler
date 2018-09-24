@@ -68,7 +68,7 @@ node {
 			def basicinfo = "\"id\": \"XXX\", \"name\": \"${APP_SHORTSTATUS[0+6*i]}\", \"owner\": \"XXX\", \"description\": \"XXX\", \"short_name\": \"XXX\", \"type\": \"XXX\""
 			def additionalinfo = ", \"state\": \"${APP_SHORTSTATUS[1+6*i]}\", \"url\": \"${APP_SHORTSTATUS[5+6*i]}\" "
             		def runtime = " \"runtime\": {\"ram\": \"XXX\", \"cpu\": \"XXX\", \"disk\": \"XXX\", \"host_type\": \"cloudfoundry\" }"
-            		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+""+"}"            
+            		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"            
             		try {
                     		//callPost("http://192.168.99.100:9123/document", jsonstring) //Include protocol
 				echo "POST: ${jsonstring}"
