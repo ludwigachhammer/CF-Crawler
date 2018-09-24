@@ -63,7 +63,7 @@ node {
         
         stage("Push Documentation"){
 		
-		def iterations = APP_SHORTLIST.length() / 6
+		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
 			def basicinfo = "\"id\": \"XXX\", \"name\": \"${APP_SHORTLIST[0+6*i]}\", \"owner\": \"XXX\", \"description\": \"XXX\", \"short_name\": \"XXX\", \"type\": \"XXX\""
 			def additionalinfo = ", \"state\": \"${APP_SHORTLIST[1+6*i]}\", \"url\": \"${APP_SHORTLIST[5+6*i]}\" "
