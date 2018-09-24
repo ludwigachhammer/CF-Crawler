@@ -53,10 +53,11 @@ node {
                 	script: 'cf apps',
                 	returnStdout: true
             		)
+		echo "APP_LIST: ${APP_LIST}"
 		LENGTH = APP_LIST.length()
             	INDEX = APP_LIST.indexOf("urls", 0)
 		APP_SHORTLIST = (APP_LIST.substring(INDEX,LENGTH-1)).replace("   ",";").split(";")
-		echo "APP_LIST: ${APP_SHORTLIST}" 	
+		echo "APP_SHORTLIST: ${APP_SHORTLIST}" 	
 		}	
         }
 		
