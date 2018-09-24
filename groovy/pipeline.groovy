@@ -71,8 +71,8 @@ node {
 			//TODO
 			//APP_SHORTSTATUS[2]: since date
 			//APP_SHORTSTATUS[3]: CPU
-			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4]
-			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5]
+			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4] //memory
+			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5] //disk
 		}
 		
         }
@@ -84,7 +84,7 @@ node {
 		for (i = 0; i <iterations; i++) {
 			def basicinfo = "\"id\": \"XXX\", \"name\": \"${APP_SHORTLIST[0+6*i]}\", \"owner\": \"XXX\", \"description\": \"XXX\", \"short_name\": \"XXX\", \"type\": \"XXX\""
 			def additionalinfo = ", \"state\": \"${APP_SHORTLIST[1+6*i]}\", \"url\": \"${APP_SHORTLIST[5+6*i]}\", \"instances\": \"${APP_SHORTLIST[2+6*i]}\" "
-            		def runtime = " \"runtime\": {\"ram\": \"XXX\", \"cpu\": \"XXX\", \"disk\": \"XXX\", \"host_type\": \"cloudfoundry\" }"
+            		def runtime = " \"runtime\": {\"ram\": \"${APP_SHORTLIST[3+6*i]}\", \"cpu\": \"XXX\", \"disk\": \"${APP_SHORTLIST[4+6*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"            
             		try {
                     		//callPost("http://192.168.99.100:9123/document", jsonstring) //Include protocol
