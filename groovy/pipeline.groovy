@@ -57,7 +57,18 @@ node {
         }
 		
         stage('Get individual Runtime Info') {
-            //TODO
+            	def iterations = APP_SHORTLIST.size() / 6
+		for (i = 0; i <iterations; i++) {
+			APP_STATUS = sh (
+                	script: 'cf app '+APP_SHORTLIST[0+6*i],
+                	returnStdout: true
+            		)
+			LENGTH = APP_STATUS.length()
+			INDEX = APP_STATUS.indexOf("#0", 0)
+			APP_SHORTSTATUS = (APP_STATUS.substring(INDEX,LENGTH-1)).replace("   ",";").split(";")
+			echo "SHORTSTATUS: ${APP_SHORTSTATUS}"
+		}
+		
         }
         
         
