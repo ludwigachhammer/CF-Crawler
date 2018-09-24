@@ -56,7 +56,7 @@ node {
 		echo "APP_LIST: ${APP_LIST}"
 		LENGTH = APP_LIST.length()
             	INDEX = APP_LIST.indexOf("urls", 0)
-		APP_SHORTLIST = (APP_LIST.substring(INDEX+4,LENGTH-1)).replace("\s",";").split(";")
+		APP_SHORTLIST = (APP_LIST.substring(INDEX+4,LENGTH-1)).replace("\\s",";").split(";")
 		echo "APP_SHORTLIST: ${APP_SHORTLIST}" 	
 		}	
         }
