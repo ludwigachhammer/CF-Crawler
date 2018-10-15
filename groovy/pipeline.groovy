@@ -71,7 +71,7 @@ node {
         
         stage("Push Documentation"){
 		LocalDateTime t = LocalDateTime.now();
-		def datestring = " { \"date\":\""+t.toString()+"\"} "
+		def datestring = (" { \"date\":\""+t.toString()+"\"} ").replace("T", " ")
 		echo "Date: ${datestring}"
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
@@ -82,7 +82,7 @@ node {
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"            
             		try {
                     		//callPost("http://192.168.99.100:9123/document", jsonstring) //Include protocol
-				//callPost("http://192.168.99.100:9123/document", )
+				callPost("http://localhost:8080/endpoint/lastUpdateOfCrawler", datestring)
                 	} catch(e) {
                    		// if no try and catch: jenkins prints an error "no content-type" but post request succeed
 			}
