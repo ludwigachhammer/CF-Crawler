@@ -34,7 +34,7 @@ node {
 	
 	stage("Get Pivio-Apps"){
 		echo "URL: ${url}"
-		//PIVIO_APPS = callGet()
+		PIVIO_APPS = callGet(url)
 		echo "PIVIO_APPS: ${PIVIO_APPS}"
         }
         
