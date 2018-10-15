@@ -35,7 +35,11 @@ node {
 	stage("Get Pivio-Apps"){
 		echo "URL: ${url}"
 		def PIVIO_APPS_TMP = callGet(url)
-		echo "PIVIO_APPS: ${PIVIO_APPS_TMP}"
+		for (i = 0; i <PIVIO_APPS_TMP.size(); i++) {
+			PIVIO_APPS.add(PIVIO_APPS_TMP[i].join(","))
+		}
+		echo "PIVIO_APPS_TMP: ${PIVIO_APPS_TMP}"
+		echo "PIVIO_APPS: ${PIVIO_APPS}"
         }
         
         stage("Get Apps-List"){
