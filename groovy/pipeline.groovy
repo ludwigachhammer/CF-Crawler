@@ -42,6 +42,7 @@ node {
 		}
 		echo "PIVIO_APPS_TMP: ${PIVIO_APPS_TMP}"
 		echo "PIVIO_APPS: ${PIVIO_APPS}"
+		echo "PIVIO_APPS SIZE: ${PIVIO_APPS.size()}"
         }
         
         stage("Get Apps-List"){
