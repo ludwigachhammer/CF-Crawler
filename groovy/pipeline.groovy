@@ -15,6 +15,10 @@ def callPost(String urlString, String queryString) {
     new groovy.json.JsonSlurper().parseText(connection.content.text)
 }
 
+def callGet(String url) {
+    new groovy.json.JsonSlurper().parseText(url.toURL().getText())
+}
+
 node {
     
     // ENVIRONMENTAL VARIABLES
