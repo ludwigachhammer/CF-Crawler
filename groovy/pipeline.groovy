@@ -26,6 +26,14 @@ node {
     	APP_SHORTLIST = []
 	HOST = "http://192.168.99.100:9123"
 	QUERY = "&query={\"query\":{\"match_all\":{}}}"
+	FIELDS = "id,name"
+	PIVIO_APPS = []
+	String encodedQuery = URLEncoder.encode(QUERY, "UTF-8");
+	
+	stage("Get Pivio-Apps"){
+		PIVIO_APPS = callGet("http://192.168.99.100:9123//document?"+encodedQuery)
+		echo "PIVIO_APPS: ${PIVIO_APPS}"
+        }
         
         stage("Get Apps-List"){
 		withCredentials([[
