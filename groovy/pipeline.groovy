@@ -68,7 +68,9 @@ node {
         
         
         stage("Push Documentation"){
-		
+		def date = new Date()
+		sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+		def datestring = " { \"date\":\""+sdf.format(date)+"\"} "
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
 			//TODO: get object and only change runtime
@@ -78,7 +80,9 @@ node {
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"            
             		try {
                     		//callPost("http://192.168.99.100:9123/document", jsonstring) //Include protocol
-				echo "POST: ${jsonstring}"
+				//callPost("http://192.168.99.100:9123/document", )
+				echo "POST: ${datestring}"
+				
                 	} catch(e) {
                    		// if no try and catch: jenkins prints an error "no content-type" but post request succeed
 			}
