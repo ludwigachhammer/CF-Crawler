@@ -36,9 +36,8 @@ node {
 		echo "URL: ${url}"
 		def PIVIO_APPS_TMP = callGet(url)
 		for (i = 0; i <PIVIO_APPS_TMP.size(); i++) {
-			def tmp = ""
-			tmp = PIVIO_APPS_TMP[i].id+":"+PIVIO_APPS_TMP[i].name
-			PIVIO_APPS.add(tmp)
+			PIVIO_APPS.add(PIVIO_APPS_TMP[i].id)
+			PIVIO_APPS.add(PIVIO_APPS_TMP[i].name)
 		}
 		echo "PIVIO_APPS_TMP: ${PIVIO_APPS_TMP}"
 		echo "PIVIO_APPS: ${PIVIO_APPS}"
