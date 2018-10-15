@@ -1,3 +1,5 @@
+import java.time.*
+
 def callPost(String urlString, String queryString) {
     def url = new URL(urlString)
     def connection = url.openConnection()
@@ -68,8 +70,8 @@ node {
         
         
         stage("Push Documentation"){
-		def date = new Date()
-		sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+		LocalDateTime t = LocalDateTime.now();
+		return t as String
 		def datestring = " { \"date\":\""+sdf.format(date)+"\"} "
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
