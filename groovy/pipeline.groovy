@@ -29,9 +29,12 @@ node {
 	FIELDS = "fields=id,name"
 	PIVIO_APPS = []
 	String encodedQuery = URLEncoder.encode(FIELDS+QUERY, "UTF-8");
+	String url = "http://192.168.99.100:9123//document?"+encodedQuery
+	
 	
 	stage("Get Pivio-Apps"){
-		PIVIO_APPS = callGet("http://192.168.99.100:9123//document?"+encodedQuery)
+		echo "URL: ${url}"
+		//PIVIO_APPS = callGet()
 		echo "PIVIO_APPS: ${PIVIO_APPS}"
         }
         
