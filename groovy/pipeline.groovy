@@ -71,7 +71,8 @@ node {
         
         stage("Push Documentation"){
 		LocalDateTime t = LocalDateTime.now();
-		def datestring = (" { \"date\":\""+t.toString()+"\"} ").replace("T", " ").substring(0,LENGTH-4)
+		formatted = t.toString().replace("T", " ").substring(0,LENGTH-4)
+		def datestring = " { \"date\":\""+formatted+"\"} "
 		echo "Date: ${datestring}"
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
