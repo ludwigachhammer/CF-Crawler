@@ -20,9 +20,10 @@ def callGet(String url) {
 }
 
 node {
-    
-    // ENVIRONMENTAL VARIABLES
-    APP_SHORTLIST = []
+    	// ENVIRONMENTAL VARIABLES
+    	APP_SHORTLIST = []
+	HOST = "http://192.168.99.100:9123"
+	QUERY = "&query={\"query\":{\"match_all\":{}}}"
         
         stage("Get Apps-List"){
 		withCredentials([[
@@ -70,6 +71,7 @@ node {
 		
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
+			//TODO: get object and only change runtime
 			def basicinfo = "\"id\": \"XXX\", \"name\": \"${APP_SHORTLIST[0+6*i]}\", \"owner\": \"XXX\", \"description\": \"XXX\", \"short_name\": \"XXX\", \"type\": \"XXX\""
 			def additionalinfo = ", \"status\": \"${APP_SHORTLIST[1+6*i]}\", \"url\": \"${APP_SHORTLIST[5+6*i]}\", \"instances\": \"${APP_SHORTLIST[2+6*i]}\" "
             		def runtime = " \"runtime\": {\"ram\": \"${APP_SHORTLIST[3+6*i]}\", \"cpu\": \"XXX\", \"disk\": \"${APP_SHORTLIST[4+6*i]}\", \"host_type\": \"cloudfoundry\" }"
