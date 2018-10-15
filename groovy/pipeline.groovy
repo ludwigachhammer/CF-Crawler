@@ -25,8 +25,8 @@ node {
     	// ENVIRONMENTAL VARIABLES
     	APP_SHORTLIST = []
 	HOST = "http://192.168.99.100:9123"
-	QUERY = "&query={\"query\":{\"match_all\":{}}}"
-	FIELDS = "fields=id,name"
+	QUERY = "query={\"query\":{\"match_all\":{}}}"
+	FIELDS = "fields=id,name&"
 	PIVIO_APPS = []
 	String encodedQuery = URLEncoder.encode(QUERY, "UTF-8");
 	String url = "http://192.168.99.100:9123//document?"+FIELDS+encodedQuery
