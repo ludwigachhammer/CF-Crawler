@@ -28,8 +28,8 @@ node {
 	QUERY = "&query={\"query\":{\"match_all\":{}}}"
 	FIELDS = "fields=id,name"
 	PIVIO_APPS = []
-	String encodedQuery = URLEncoder.encode(FIELDS+QUERY, "UTF-8");
-	String url = "http://192.168.99.100:9123//document?"+encodedQuery
+	String encodedQuery = URLEncoder.encode(QUERY, "UTF-8");
+	String url = "http://192.168.99.100:9123//document?"+FIELDS+encodedQuery
 	
 	
 	stage("Get Pivio-Apps"){
