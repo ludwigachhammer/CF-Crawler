@@ -19,22 +19,6 @@ node {
     
     // ENVIRONMENTAL VARIABLES
     APP_SHORTLIST = []
-
-    deleteDir()
-
-    stage('Sources') {
-        checkout([
-                $class           : 'GitSCM',
-                branches         : [[name: "refs/heads/master"]],
-                extensions       : [[$class: 'CleanBeforeCheckout', localBranch: "master"]],
-                userRemoteConfigs: [[
-                                            credentialsId: 'cbf178fa-56ee-4394-b782-36eb8932ac64',
-                                            url          : "https://github.com/Nicocovi/CF-Crawler"
-                                    ]]
-                ])
-    }
-
-    dir("") {
         
         stage("Get Apps-List"){
 		withCredentials([[
@@ -94,7 +78,5 @@ node {
 			}
 		}
         }
-        
-    }//dir("")
 
 }
