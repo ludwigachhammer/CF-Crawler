@@ -82,16 +82,19 @@ node {
 			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4] //memory
 			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5] //disk
 		}
-		
         }
         
         
         stage("Push Documentation"){
+		//TIME
 		LocalDateTime t = LocalDateTime.now();
 		formatted = (t.toString()).replace("T", " ")
 		formatted = formatted.substring(0,(formatted.length())-4)
 		def datestring = " { \"date\":\""+formatted+"\"} "
 		echo "Date: ${datestring}"
+		//TODO:
+		//BUILD JSON
+		
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
 			//TODO: get object and only change runtime
