@@ -111,6 +111,11 @@ node {
                    		// if no try and catch: jenkins prints an error "no content-type" but post request succeed
 			}
 		}
+		try {
+			callPost("http://localhost:8080/endpoint/lastUpdateOfCrawler", datestring)
+		} catch(e) {
+			// if no try and catch: jenkins prints an error "no content-type" but post request succeed
+		}
         }
 
 }
