@@ -109,13 +109,13 @@ node {
 		formatted = (t.toString()).replace("T", " ")
 		formatted = formatted.substring(0,(formatted.length())-4)
 		def datestring = " { \"date\":\""+formatted+"\"} "
-		//echo "APP_SHORTLIST: ${APP_SHORTLIST}"
+		def APPS_TO_UPDATE = APP_LONGLIST.toArray();
 		//TODO:
 		//BUILD JSON
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
 			//TODO: get object and only change runtime
-			def basicinfo = " \"id\":XXX\" \",\"name\": \"${APP_SHORTLIST[0+6*i]}\","
+			def basicinfo = " \"id\":\"XXX\",\"name\": \"${APP_SHORTLIST[0+6*i]}\","
 			def additionalinfo = " \"status\": \"${APP_SHORTLIST[1+6*i]}\", \"url\": \"${APP_SHORTLIST[5+6*i]}\", \"instances\": \"${APP_SHORTLIST[2+6*i]}\", "
             		def runtime = " \"runtime\": {\"ram\": \"${APP_SHORTLIST[3+6*i]}\", \"cpu\": \"XXX\", \"disk\": \"${APP_SHORTLIST[4+6*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
