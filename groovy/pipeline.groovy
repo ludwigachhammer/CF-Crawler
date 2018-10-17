@@ -101,7 +101,7 @@ node {
 		for (i = 0; i <iterations; i++) {
 			//TODO: get object and only change runtime
 			def basicinfo = "\"name\": \"${APP_SHORTLIST[0+6*i]}\","
-			def additionalinfo = ", \"status\": \"${APP_SHORTLIST[1+6*i]}\", \"url\": \"${APP_SHORTLIST[5+6*i]}\", \"instances\": \"${APP_SHORTLIST[2+6*i]}\" "
+			def additionalinfo = " \"status\": \"${APP_SHORTLIST[1+6*i]}\", \"url\": \"${APP_SHORTLIST[5+6*i]}\", \"instances\": \"${APP_SHORTLIST[2+6*i]}\" "
             		def runtime = " \"runtime\": {\"ram\": \"${APP_SHORTLIST[3+6*i]}\", \"cpu\": \"XXX\", \"disk\": \"${APP_SHORTLIST[4+6*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
 			echo "JSONString: ${jsonstring}"
