@@ -80,6 +80,7 @@ node {
 			//TODO
 			//APP_SHORTSTATUS[2]: since date
 			//APP_SHORTSTATUS[3]: CPU
+			APP_SHORTSTATUS[5] = APP_SHORTSTATUS[5].replace(" type:", "")
 			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4] //memory
 			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5] //disk
 		}
