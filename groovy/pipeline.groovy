@@ -73,7 +73,7 @@ node {
             		)
 			LENGTH = APP_STATUS.length()
 			INDEX = APP_STATUS.indexOf("#0", 0)
-			APP_SHORTSTATUS = (APP_STATUS.substring(INDEX,LENGTH-1)).replaceAll("\n"," ").replaceAll("   ",";").split(";")
+			APP_SHORTSTATUS = (APP_STATUS.substring(INDEX,LENGTH-1)).replaceAll("\n","").replaceAll("   ",";").split(";")
 			echo "SHORTSTATUS: ${APP_SHORTSTATUS}"
 			APP_SHORTLIST[1+6*i] = APP_SHORTSTATUS[1]
 			//TODO
