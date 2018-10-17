@@ -115,9 +115,9 @@ node {
 		def iterations = APPS_TO_UPDATE.size() / 9
 		for (i = 0; i <iterations; i++) {
 			//TODO: get object and only change runtime
-			def basicinfo = " \"id\":\"${APPS_TO_UPDATE[0+6*i]}\",\"name\": \"${APPS_TO_UPDATE[1+6*i]}\","
-			def additionalinfo = " \"status\": \"${APPS_TO_UPDATE[4+6*i]}\", \"url\": \"${APPS_TO_UPDATE[3+6*i]}\", \"instances\": \"${APPS_TO_UPDATE[2+6*i]}\", "
-            		def runtime = " \"runtime\": {\"ram\": \"${APPS_TO_UPDATE[7+6*i]}\", \"cpu\": \"${APPS_TO_UPDATE[6+6*i]}\", \"disk\": \"${APPS_TO_UPDATE[8+6*i]}\", \"host_type\": \"cloudfoundry\" }"
+			def basicinfo = " \"id\":\"${APPS_TO_UPDATE[0+9*i]}\",\"name\": \"${APPS_TO_UPDATE[1+9*i]}\","
+			def additionalinfo = " \"status\": \"${APPS_TO_UPDATE[4+9*i]}\", \"url\": \"${APPS_TO_UPDATE[3+9*i]}\", \"instances\": \"${APPS_TO_UPDATE[2+9*i]}\", "
+            		def runtime = " \"runtime\": {\"ram\": \"${APPS_TO_UPDATE[7+9*i]}\", \"cpu\": \"${APPS_TO_UPDATE[6+9*i]}\", \"disk\": \"${APPS_TO_UPDATE[8+9*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
 			echo "JSONString: ${jsonstring}"
             		try {
