@@ -28,7 +28,7 @@ node {
 	HOST = "http://192.168.99.100:9123"
 	QUERY = "query={\"query\":{\"match_all\":{}}}"
 	FIELDS = "fields=id,name&"
-	PIVIO_APPS = []
+	List<String> PIVIO_APPS = new ArrayList<String>()
 	String encodedQuery = URLEncoder.encode(QUERY, "UTF-8");
 	String url = "http://192.168.99.100:9123//document?"+FIELDS+encodedQuery
 	
@@ -83,7 +83,12 @@ node {
 			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4] //memory
 			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5] //disk
 			//TODO
-			//APP_LONGLIST.add([X]) //id
+			if(PIVIO_APPS.contains(APP_SHORTLIST[0])){
+				dex index = PIVIO_APPS.indexOf(APP_SHORTLIST[0])
+				APP_LONGLIST.add(PIVIO_APPS.get(index-1) //id
+			}else{
+				APP_LONGLIST.add("XXX") //id
+			}
 			APP_LONGLIST.add(APP_SHORTLIST[0]) //name
 			APP_LONGLIST.add(APP_SHORTSTATUS[1]) //status
 			APP_LONGLIST.add(APP_SHORTSTATUS[2]) //since date
