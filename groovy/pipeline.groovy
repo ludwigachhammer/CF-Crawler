@@ -73,7 +73,7 @@ node {
             		)
 			LENGTH = APP_STATUS.length()
 			INDEX = APP_STATUS.indexOf("#0", 0)
-			APP_SHORTSTATUS = (APP_STATUS.substring(INDEX,LENGTH-1)).replace("   ",";").split(";")
+			APP_SHORTSTATUS = (APP_STATUS.substring(INDEX,LENGTH-1)).replaceAll("\n"," ").replaceAll("   ",";").split(";")
 			echo "SHORTSTATUS: ${APP_SHORTSTATUS}"
 			APP_SHORTLIST[1+6*i] = APP_SHORTSTATUS[1]
 			//TODO
@@ -97,7 +97,7 @@ node {
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
 			//TODO: get object and only change runtime
-			def basicinfo = "\"id\": \"XXX\", \"name\": \"${APP_SHORTLIST[0+6*i]}\", \"owner\": \"XXX\", \"description\": \"XXX\", \"short_name\": \"XXX\", \"type\": \"XXX\""
+			def basicinfo = "\"name\": \"${APP_SHORTLIST[0+6*i]}\","
 			def additionalinfo = ", \"status\": \"${APP_SHORTLIST[1+6*i]}\", \"url\": \"${APP_SHORTLIST[5+6*i]}\", \"instances\": \"${APP_SHORTLIST[2+6*i]}\" "
             		def runtime = " \"runtime\": {\"ram\": \"${APP_SHORTLIST[3+6*i]}\", \"cpu\": \"XXX\", \"disk\": \"${APP_SHORTLIST[4+6*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
