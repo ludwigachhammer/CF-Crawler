@@ -24,6 +24,7 @@ def callGet(String url) {
 node {
     	// ENVIRONMENTAL VARIABLES
     	APP_SHORTLIST = []
+	List<String> APP_LONGLIST = new ArrayList<String>()APP_LONGLIST
 	HOST = "http://192.168.99.100:9123"
 	QUERY = "query={\"query\":{\"match_all\":{}}}"
 	FIELDS = "fields=id,name&"
@@ -78,13 +79,17 @@ node {
 			APP_SHORTSTATUS = (APP_STATUS.substring(INDEX,LENGTH-1)).replaceAll("\n"," ").replaceAll("  \\s+",";").split(";")
 			echo "SHORTSTATUS: ${APP_SHORTSTATUS}"
 			APP_SHORTLIST[1+6*i] = APP_SHORTSTATUS[1]
+			APP_LONGLIST.add(APP_SHORTSTATUS[1+6*i])
 			//TODO
-			//APP_SHORTSTATUS[2]: since date
-			//APP_SHORTSTATUS[3]: CPU
+			APP_LONGLIST.add(APP_SHORTSTATUS[2+6*i]) //since date
+			APP_LONGLIST.add(APP_SHORTSTATUS[3+6*i]) //CPU
 			APP_SHORTSTATUS[5] = APP_SHORTSTATUS[5].replace("type:", "")
 			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4] //memory
+			APP_LONGLIST.add(APP_SHORTSTATUS[4+6*i])
 			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5] //disk
+			APP_LONGLIST.add(APP_SHORTSTATUS[5+6*i])
 		}
+		echo "APP_LONGLIST: ${APP_LONGLIST}"
         }
         
         
@@ -100,7 +105,7 @@ node {
 		def iterations = APP_SHORTLIST.size() / 6
 		for (i = 0; i <iterations; i++) {
 			//TODO: get object and only change runtime
-			def basicinfo = "\"name\": \"${APP_SHORTLIST[0+6*i]}\","
+			def basicinfo = " \"id\":XXX\" \",\"name\": \"${APP_SHORTLIST[0+6*i]}\","
 			def additionalinfo = " \"status\": \"${APP_SHORTLIST[1+6*i]}\", \"url\": \"${APP_SHORTLIST[5+6*i]}\", \"instances\": \"${APP_SHORTLIST[2+6*i]}\", "
             		def runtime = " \"runtime\": {\"ram\": \"${APP_SHORTLIST[3+6*i]}\", \"cpu\": \"XXX\", \"disk\": \"${APP_SHORTLIST[4+6*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
