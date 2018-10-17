@@ -85,7 +85,7 @@ node {
 			//TODO
 			if(PIVIO_APPS.contains(APP_SHORTLIST[0])){
 				dex index = PIVIO_APPS.indexOf(APP_SHORTLIST[0])
-				APP_LONGLIST.add(PIVIO_APPS.get(index-1) //id
+				APP_LONGLIST.add(PIVIO_APPS.get(index-1)) //id
 			}else{
 				APP_LONGLIST.add("XXX") //id
 			}
