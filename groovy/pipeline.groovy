@@ -89,14 +89,15 @@ node {
 			}else{
 				APP_LONGLIST.add("XXX") //id
 			}
-			APP_LONGLIST.add(APP_SHORTLIST[0]) //name
-			APP_LONGLIST.add(APP_SHORTSTATUS[1]) //status
-			APP_LONGLIST.add(APP_SHORTSTATUS[2]) //since date
-			APP_LONGLIST.add(APP_SHORTSTATUS[3]) //CPU
-			APP_LONGLIST.add(APP_SHORTSTATUS[4]) //memory
-			APP_LONGLIST.add(APP_SHORTSTATUS[5]) //disk
-			APP_LONGLIST.add(APP_SHORTLIST[2]) //instances
-			APP_LONGLIST.add(APP_SHORTLIST[5]) //url
+			APP_LONGLIST.add(APP_SHORTLIST[0+6*i]) //0 name
+			APP_LONGLIST.add(APP_SHORTLIST[2+6*i]) //2 instances
+			APP_LONGLIST.add(APP_SHORTLIST[5+6*i]) //5 url
+			APP_LONGLIST.add(APP_SHORTSTATUS[1]) //1 status
+			APP_LONGLIST.add(APP_SHORTSTATUS[2]) //2 since date
+			APP_LONGLIST.add(APP_SHORTSTATUS[3]) //3 CPU
+			APP_LONGLIST.add(APP_SHORTSTATUS[4]) //4 memory
+			APP_LONGLIST.add(APP_SHORTSTATUS[5]) //5 disk
+			
 		}
 		echo "APP_LONGLIST: ${APP_LONGLIST}"
         }
