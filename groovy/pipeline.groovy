@@ -103,8 +103,8 @@ node {
             		def runtime = " \"runtime\": {\"ram\": \"${APP_SHORTLIST[3+6*i]}\", \"cpu\": \"XXX\", \"disk\": \"${APP_SHORTLIST[4+6*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"            
             		try {
-                    		//callPost("http://192.168.99.100:9123/document", jsonstring) //Include protocol
 				callPost("http://localhost:8080/endpoint/lastUpdateOfCrawler", datestring)
+				callPost("http://192.168.99.100:9123/update/microservice", jsonstring)
                 	} catch(e) {
                    		// if no try and catch: jenkins prints an error "no content-type" but post request succeed
 			}
