@@ -40,9 +40,9 @@ node {
 			PIVIO_APPS.add(PIVIO_APPS_TMP[i].id)
 			PIVIO_APPS.add(PIVIO_APPS_TMP[i].name)
 		}
-		echo "PIVIO_APPS_TMP: ${PIVIO_APPS_TMP}"
+		//echo "PIVIO_APPS_TMP: ${PIVIO_APPS_TMP}"
 		echo "PIVIO_APPS: ${PIVIO_APPS}"
-		echo "PIVIO_APPS SIZE: ${PIVIO_APPS.size()}"
+		//echo "PIVIO_APPS SIZE: ${PIVIO_APPS.size()}"
         }
         
         stage("Get Apps-List"){
@@ -62,7 +62,7 @@ node {
 		LENGTH = APP_LIST.length()
             	INDEX = APP_LIST.indexOf("urls", 0)
 		APP_SHORTLIST = (APP_LIST.substring(INDEX+5,LENGTH-1)).replaceAll("\\s+",";").split(";")
-		echo "APP_SHORTLIST: ${APP_SHORTLIST}" 	
+		//echo "APP_SHORTLIST: ${APP_SHORTLIST}" 	
 		}	
         }
 		
@@ -109,7 +109,7 @@ node {
 		formatted = (t.toString()).replace("T", " ")
 		formatted = formatted.substring(0,(formatted.length())-4)
 		def datestring = " { \"date\":\""+formatted+"\"} "
-		echo "APP_SHORTLIST: ${APP_SHORTLIST}"
+		//echo "APP_SHORTLIST: ${APP_SHORTLIST}"
 		//TODO:
 		//BUILD JSON
 		def iterations = APP_SHORTLIST.size() / 6
