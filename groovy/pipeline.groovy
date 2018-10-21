@@ -86,7 +86,8 @@ node {
 			if(PIVIO_APPS.contains(APP_SHORTLIST[0])){
 				def index = PIVIO_APPS.indexOf(APP_SHORTLIST[0])
 				APP_LONGLIST.add(PIVIO_APPS.get(index-1)) //id
-				echo "Element: ${PIVIO_APPS[index]}"
+				echo "App: ${APP_SHORTLIST[0]}"
+				echo "Element: ${PIVIO_APPS[index]} , ${PIVIO_APPS[index-1]}"
 			}else{
 				APP_LONGLIST.add("XXX") //id
 			}
