@@ -83,9 +83,10 @@ node {
 			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4] //memory
 			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5] //disk
 			//TODO
-			if(PIVIO_APPS.equals(APP_SHORTLIST[0])){
+			if(PIVIO_APPS.contains(APP_SHORTLIST[0])){
 				def index = PIVIO_APPS.indexOf(APP_SHORTLIST[0])
 				APP_LONGLIST.add(PIVIO_APPS.get(index-1)) //id
+				echo "Element: ${PIVIO_APPS[index]}"
 			}else{
 				APP_LONGLIST.add("XXX") //id
 			}
