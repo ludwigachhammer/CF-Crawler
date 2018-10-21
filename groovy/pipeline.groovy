@@ -75,15 +75,15 @@ node {
             		)
 			LENGTH = APP_STATUS.length()
 			INDEX = APP_STATUS.indexOf("#0", 0)
-			//echo "APP_STATUS: ${APP_STATUS}"
+			echo "APP_STATUS: ${APP_STATUS}"
 			APP_SHORTSTATUS = (APP_STATUS.substring(INDEX,LENGTH-1)).replaceAll("\n"," ").replaceAll("  \\s+",";").split(";")
-			//echo "SHORTSTATUS: ${APP_SHORTSTATUS}"
+			echo "SHORTSTATUS: ${APP_SHORTSTATUS}"
 			APP_SHORTLIST[1+6*i] = APP_SHORTSTATUS[1]
 			APP_SHORTSTATUS[5] = APP_SHORTSTATUS[5].replace("type:", "")
 			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4] //memory
 			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5] //disk
 			//TODO
-			echo "App: ${APP_SHORTLIST[0]}"
+			echo "APP_SHORTLIST: ${APP_SHORTLIST}"
 			if(PIVIO_APPS.contains(APP_SHORTLIST[0])){
 				def index = PIVIO_APPS.indexOf(APP_SHORTLIST[0])
 				APP_LONGLIST.add(PIVIO_APPS.get(index-1)) //id
