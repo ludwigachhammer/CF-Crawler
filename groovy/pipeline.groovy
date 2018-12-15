@@ -125,7 +125,11 @@ node {
             		def runtime = " \"runtime\": {\"ram\": \"${APPS_TO_UPDATE[7+9*i]}\", \"cpu\": \"${APPS_TO_UPDATE[6+9*i]}\", \"disk\": \"${APPS_TO_UPDATE[8+9*i]}\", \"instances\": \"${APPS_TO_UPDATE[2+9*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
 			echo "JSONString: ${jsonstring}"
-			callPost("http://131.159.30.173:8080/update/microservice", jsonstring)
+			try{
+				callPost("http://131.159.30.173:8080/update/microservice", jsonstring)
+			}catch(e){
+				echo "Exception: ${e}"
+			}
 		}
 		try {
 			callPost("http://131.159.30.173:8080/endpoint/lastUpdateOfCrawler", datestring)
