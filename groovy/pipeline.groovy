@@ -30,7 +30,7 @@ node {
 	FIELDS = "fields=id,name&"
 	List<String> PIVIO_APPS = new ArrayList<String>()
 	String encodedQuery = URLEncoder.encode(QUERY, "UTF-8");
-	String url = "http://192.168.99.100:9123//document?"+FIELDS+encodedQuery
+	String url = "http://localhost:9123//document?"+FIELDS+encodedQuery
 	
 	
 	stage("Get Pivio-Apps"){
