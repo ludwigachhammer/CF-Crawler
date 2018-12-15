@@ -6,7 +6,7 @@ def callPost(String urlString, String queryString) {
     connection.setRequestMethod("POST")
     connection.doInput = true
     connection.doOutput = true
-    connection.setRequestProperty("content-type", "application/json")
+    connection.setRequestProperty("content-type", "application/json;charset=UTF-8")
 
     def writer = new OutputStreamWriter(connection.outputStream)
     writer.write(queryString.toString())
@@ -125,11 +125,7 @@ node {
             		def runtime = " \"runtime\": {\"ram\": \"${APPS_TO_UPDATE[7+9*i]}\", \"cpu\": \"${APPS_TO_UPDATE[6+9*i]}\", \"disk\": \"${APPS_TO_UPDATE[8+9*i]}\", \"instances\": \"${APPS_TO_UPDATE[2+9*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
 			echo "JSONString: ${jsonstring}"
-            		try {
-				callPost("http://131.159.30.173:8080/update/microservice", jsonstring)
-                	} catch(e) {
-                   		// if no try and catch: jenkins prints an error "no content-type" but post request succeed
-			}
+			callPost("http://131.159.30.173:8080/update/microservice", jsonstring)
 		}
 		try {
 			callPost("http://131.159.30.173:8080/endpoint/lastUpdateOfCrawler", datestring)
