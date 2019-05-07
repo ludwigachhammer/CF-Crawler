@@ -25,7 +25,7 @@ node {
     	// ENVIRONMENTAL VARIABLES
     	APP_SHORTLIST = []
 	List<String> APP_LONGLIST = new ArrayList<String>()
-	HOST = "http://131.159.30.173:9123"
+	HOST = "http://192.168.99.100:9123/"
 	QUERY = "query={\"query\":{\"match_all\":{}}}"
 	FIELDS = "fields=id,name&"
 	List<String> PIVIO_APPS = new ArrayList<String>()
@@ -48,12 +48,12 @@ node {
         stage("Get Apps-List"){
 		withCredentials([[
 			     $class          : 'UsernamePasswordMultiBinding',
-			     credentialsId   : '3e479734-15f2-4816-ba21-d3926da4e288',
+			     credentialsId   : '05487704-f456-43cb-96c3-72aaffdba62f',
 			     usernameVariable: 'CF_USERNAME',
 			     passwordVariable: 'CF_PASSWORD'
 		]]) {
-		sh 'cf login -a https://api.run.pivotal.io -u $CF_USERNAME -p $CF_PASSWORD --skip-ssl-validation'
-		sh 'cf target -o ncorpan-org -s development'
+		sh "cf login -a https://api.run.pivotal.io -u $CF_USERNAME -p \"$CF_PASSWORD\" --skip-ssl-validation"
+		sh 'cf target -o ead-tool -org -s development'
 		APP_LIST = sh (
                 	script: 'cf apps',
                 	returnStdout: true
@@ -126,14 +126,15 @@ node {
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
 			echo "JSONString: ${jsonstring}"
 			try{
-				callPost("http://131.159.30.173:8080/update/microservice", jsonstring)
+				//callPost("http://131.159.30.173:8080/update/microservice", jsonstring)
+				callPost("http://localhost:8080/update/microservice", jsonstring)
 			}catch(e){
 				echo "Exception: ${e}"
 			}
 		}
 		try {
-			callPost("http://131.159.30.173:8080/endpoint/lastUpdateOfCrawler", datestring)
-			//callPost("http://localhost:8080/endpoint/lastUpdateOfCrawler", datestring)
+			//callPost("http://131.159.30.173:8080/endpoint/lastUpdateOfCrawler", datestring)
+			callPost("http://localhost:8080/endpoint/lastUpdateOfCrawler", datestring)
 		} catch(e) {
 			// if no try and catch: jenkins prints an error "no content-type" but post request succeed
 		}
