@@ -83,6 +83,7 @@ node {
 			APP_SHORTLIST[3+6*i] = APP_SHORTSTATUS[4] //memory
 			APP_SHORTLIST[4+6*i] = APP_SHORTSTATUS[5] //disk
 			//TODO
+			echo "PIVIO_APP: ${PIVIO_APPS}"
 			echo "APP_SHORTLIST: ${APP_SHORTLIST}"
 			if(PIVIO_APPS.contains(APP_SHORTLIST[0+6*i])){
 				def index = PIVIO_APPS.indexOf(APP_SHORTLIST[0+6*i])
