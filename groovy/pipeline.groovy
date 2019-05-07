@@ -126,8 +126,8 @@ node {
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
 			echo "JSONString: ${jsonstring}"
 			try{
-				//callPost("http://131.159.30.173:8080/update/microservice", jsonstring)
-				callPost("http://localhost:8080/update/microservice", jsonstring)
+				callPost("http://131.159.30.173:8080/update/microservice", jsonstring)
+				//callPost("http://localhost:8080/update/microservice", jsonstring)
 			}catch(e){
 				echo "Exception: ${e}"
 			}
