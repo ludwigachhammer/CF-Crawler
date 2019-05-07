@@ -53,7 +53,7 @@ node {
 			     passwordVariable: 'CF_PASSWORD'
 		]]) {
 		sh "cf login -a https://api.run.pivotal.io -u $CF_USERNAME -p \"$CF_PASSWORD\" --skip-ssl-validation"
-		sh 'cf target -o ead-tool -org -s development'
+		sh 'cf target -o ead-tool -s development'
 		APP_LIST = sh (
                 	script: 'cf apps',
                 	returnStdout: true
