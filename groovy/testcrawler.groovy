@@ -25,7 +25,7 @@ node {
     	// ENVIRONMENTAL VARIABLES
     	APP_SHORTLIST = []
 	List<String> APP_LONGLIST = new ArrayList<String>()
-	HOST = "http://192.168.99.100:9123/"
+	HOST = "http://localhost:8080/"
 	QUERY = "query={\"query\":{\"match_all\":{}}}"
 	FIELDS = "fields=id,name&"
 	List<String> PIVIO_APPS = new ArrayList<String>()
