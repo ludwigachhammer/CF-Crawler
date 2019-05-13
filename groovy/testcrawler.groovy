@@ -30,6 +30,7 @@ node {
 	FIELDS = "fields=id,name&"
 	List<String> PIVIO_APPS = new ArrayList<String>()
 	String encodedQuery = URLEncoder.encode(QUERY, "UTF-8");
+	echo "http://localhost:8080//document?+${FIELDS}+${encodedQuery}";
 	String url = "http://localhost:8080//document?"+FIELDS+encodedQuery
 	
 	
