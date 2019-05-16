@@ -131,10 +131,13 @@ node {
 			echo "JSONString: ${jsonstring}"
 			def flatJSON = "{\"id\":\"${APPS_TO_UPDATE[0+9*i]}\",\"name\": \"${APPS_TO_UPDATE[1+9*i]}\", \"status\": \"${APPS_TO_UPDATE[4+9*i]}\", \"url\": \"${APPS_TO_UPDATE[3+9*i]}\", \"lastUpdate\":\"${tAsString}\", \"ram\": \"${APPS_TO_UPDATE[7+9*i]}\", \"cpu\": \"${APPS_TO_UPDATE[6+9*i]}\", \"disk\": \"${APPS_TO_UPDATE[8+9*i]}\", \"instances\": \"${APPS_TO_UPDATE[2+9*i]}\", \"host_type\": \"cloudfoundry\"}"
 			echo "flatJSON: ${flatJSON}" 
+			echo "flatJSON index 0: ${flatJSON[0]}"
+			echo "flatJSON index 0: ${flatJSON["id"]}"
+			echo "flatJSON index 0: ${flatJSON.id}"
 			try{
 				//callPost("http://192.168.99.100:8080/update/microservice", jsonstring)
 				//def test = new JsonSlurper().parseText(flatJson)
-				if (flatJSON[0]=="") {
+				if (flatJSON.id=="") {
 					echo "${i}. call to endpoint //document: localhost:8080/document"
 					callPost("http://localhost:8080/document/", flatJSON)
 				}
