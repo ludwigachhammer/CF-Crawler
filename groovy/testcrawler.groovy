@@ -134,7 +134,7 @@ node {
 			try{
 				//callPost("http://192.168.99.100:8080/update/microservice", jsonstring)
 				//def test = new JsonSlurper().parseText(flatJson)
-				if (flatJSON.id=="") {
+				if (flatJSON[0]=="") {
 					echo "${i}. call to endpoint //document: localhost:8080/document"
 					callPost("http://localhost:8080/document/", flatJSON)
 				}
