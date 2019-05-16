@@ -144,8 +144,7 @@ node {
 		}
 		try {
 			//callPost("http://192.168.99.100:8080/endpoint/lastUpdateOfCrawler", datestring)
-			else
-				callPost("http://localhost:8025/endpoint/lastUpdateOfCrawler", datestring)
+			callPost("http://localhost:8025/endpoint/lastUpdateOfCrawler", datestring)
 		} catch(e) {
 			// if no try and catch: jenkins prints an error "no content-type" but post request succeed
 		}
