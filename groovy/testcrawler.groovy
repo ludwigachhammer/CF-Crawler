@@ -132,6 +132,7 @@ node {
 			def flatJSON = "{\"id\":\"${APPS_TO_UPDATE[0+9*i]}\",\"name\": \"${APPS_TO_UPDATE[1+9*i]}\", \"status\": \"${APPS_TO_UPDATE[4+9*i]}\", \"url\": \"${APPS_TO_UPDATE[3+9*i]}\", \"lastUpdate\":\"${tAsString}\", \"ram\": \"${APPS_TO_UPDATE[7+9*i]}\", \"cpu\": \"${APPS_TO_UPDATE[6+9*i]}\", \"disk\": \"${APPS_TO_UPDATE[8+9*i]}\", \"instances\": \"${APPS_TO_UPDATE[2+9*i]}\", \"host_type\": \"cloudfoundry\"}"
 			echo "flatJSON: ${flatJSON}" 
 			det test = flatJSON.toArray()
+			echo "test: ${test}"
 			echo "flatJSON index 0: ${test[0]}"
 			echo "flatJSON index 0: ${test["id"]}"
 			echo "flatJSON index 0: ${test.id}"
