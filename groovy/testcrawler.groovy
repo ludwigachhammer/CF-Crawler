@@ -93,7 +93,7 @@ node {
 				echo "App: ${APP_SHORTLIST[0]}"
 				echo "Element: ${PIVIO_APPS[index]} , ${PIVIO_APPS[index-1]}"
 			}else{
-				APP_LONGLIST.add("") //id
+				APP_LONGLIST.add(NULL) //id
 			}
 			APP_LONGLIST.add(APP_SHORTLIST[0+6*i]) //0 name
 			APP_LONGLIST.add(APP_SHORTLIST[2+6*i]) //2 instances
@@ -127,14 +127,15 @@ node {
 			def additionalinfo = " \"status\": \"${APPS_TO_UPDATE[4+9*i]}\", \"url\": \"${APPS_TO_UPDATE[3+9*i]}\", \"lastUpdate\":\"${tAsString}\", "
             		def runtime = " \"runtime\": {\"ram\": \"${APPS_TO_UPDATE[7+9*i]}\", \"cpu\": \"${APPS_TO_UPDATE[6+9*i]}\", \"disk\": \"${APPS_TO_UPDATE[8+9*i]}\", \"instances\": \"${APPS_TO_UPDATE[2+9*i]}\", \"host_type\": \"cloudfoundry\" }"
             		def jsonstring = "{"+basicinfo+""+additionalinfo+""+runtime+"}"
-			echo "basicinfo: ${basicinfo}"
-			echo "additionalinfo: ${additionalinfo}"
-			echo "runtime: ${runtime}"
 			echo "JSONString: ${jsonstring}"
 			def flatJSON = "{\"id\":\"${APPS_TO_UPDATE[0+9*i]}\",\"name\": \"${APPS_TO_UPDATE[1+9*i]}\", \"status\": \"${APPS_TO_UPDATE[4+9*i]}\", \"url\": \"${APPS_TO_UPDATE[3+9*i]}\", \"lastUpdate\":\"${tAsString}\", \"ram\": \"${APPS_TO_UPDATE[7+9*i]}\", \"cpu\": \"${APPS_TO_UPDATE[6+9*i]}\", \"disk\": \"${APPS_TO_UPDATE[8+9*i]}\", \"instances\": \"${APPS_TO_UPDATE[2+9*i]}\", \"host_type\": \"cloudfoundry\"}"
 			echo "flatJSON: ${flatJSON}" 
 			try{
 				//callPost("http://192.168.99.100:8080/update/microservice", jsonstring)
+				if (flatJSON.id=NULL) {
+					callPost("http://localhost:8080/document/", flatJSON)
+				}
+				else
 				callPost("http://localhost:8025/update/microservice", jsonstring)
 			}catch(e){
 				echo "Exception: ${e}"
@@ -142,7 +143,8 @@ node {
 		}
 		try {
 			//callPost("http://192.168.99.100:8080/endpoint/lastUpdateOfCrawler", datestring)
-			callPost("http://localhost:8025/endpoint/lastUpdateOfCrawler", datestring)
+			else
+				callPost("http://localhost:8025/endpoint/lastUpdateOfCrawler", datestring)
 		} catch(e) {
 			// if no try and catch: jenkins prints an error "no content-type" but post request succeed
 		}
