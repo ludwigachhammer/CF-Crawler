@@ -94,7 +94,7 @@ node {
 				echo "App: ${APP_SHORTLIST[0]}"
 				echo "Element: ${PIVIO_APPS[index]} , ${PIVIO_APPS[index-1]}"
 			}else{
-				APP_LONGLIST.add("") //id
+				APP_LONGLIST.add("XXX") //id
 			}
 			APP_LONGLIST.add(APP_SHORTLIST[0+6*i]) //0 name
 			APP_LONGLIST.add(APP_SHORTLIST[2+6*i]) //2 instances
