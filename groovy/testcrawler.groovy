@@ -32,7 +32,7 @@ node {
 	String encodedQuery = URLEncoder.encode(QUERY, "UTF-8");
 	echo "http://localhost:8080//document?+${FIELDS}+${encodedQuery}";
 	//String url = "http://localhost:8080//document?"+FIELDS+encodedQuery
-	String url = "http://localhost:8080//document/;
+	String url = "http://localhost:8080//document/";
 	
 	
 	stage("Get Pivio-Apps"){
