@@ -94,7 +94,7 @@ node {
 				echo "App: ${APP_SHORTLIST[0]}"
 				echo "Element: ${PIVIO_APPS[index]} , ${PIVIO_APPS[index-1]}"
 			}else{
-				APP_LONGLIST.add(NULL) //id
+				APP_LONGLIST.add("") //id
 			}
 			APP_LONGLIST.add(APP_SHORTLIST[0+6*i]) //0 name
 			APP_LONGLIST.add(APP_SHORTLIST[2+6*i]) //2 instances
@@ -134,7 +134,7 @@ node {
 			try{
 				//callPost("http://192.168.99.100:8080/update/microservice", jsonstring)
 				//def test = new JsonSlurper().parseText(flatJson)
-				if (flatJSON.id==NULL) {
+				if (flatJSON.id=="") {
 					callPost("http://localhost:8080/document/", flatJSON)
 				}
 				else
