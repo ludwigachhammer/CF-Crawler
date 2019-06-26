@@ -1,5 +1,7 @@
 node {
 
+	def
+
   stage("login"){
 		withCredentials([[
 			     $class          : 'UsernamePasswordMultiBinding',
@@ -32,6 +34,8 @@ node {
                      .drop(2)     // Drop the first element
                      .join('\n')  // Join back into a string separated by newline
 	    echo "token: ${token}"
+	    def json = "https://api.run.pivotal.io/v2/apps".toURL().getText(requestProperties: [Accept: 'application/json;charset=utf-8', Authorization: "${token}"])
+		echo "Result: ${json}"
 		}
   }	
 	/*
