@@ -1,6 +1,6 @@
 node {
 
-  tage("login"){
+  stage("login"){
 		withCredentials([[
 			     $class          : 'UsernamePasswordMultiBinding',
 			     credentialsId   : '05487704-f456-43cb-96c3-72aaffdba62f',
