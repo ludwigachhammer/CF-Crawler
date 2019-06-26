@@ -1,6 +1,5 @@
 node {
 
-	def
 
   stage("login"){
 		withCredentials([[
