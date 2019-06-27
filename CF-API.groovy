@@ -59,8 +59,9 @@ node {
 	}*/
 }
 
+/*
 def make_get_request(String token) {
-	@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7' )
+
 	def http = new HTTPBuilder()
 
 	http.request( 'https://api.run.pivotal.io', Method.GET, ContentType.JSON ) { req ->
@@ -81,7 +82,7 @@ def make_get_request(String token) {
 		}
 	}
 }
-
+*/
 
 def getApps(String token) {
 	def url = new URL('https://api.run.pivotal.io/v2/apps')
