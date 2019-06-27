@@ -39,7 +39,7 @@ node {
 	    echo "token: ${token}"
 
 		def apiURL = new URL("https://api.run.pivotal.io/v2/apps")
-		def json = "https://api.run.pivotal.io/v2/apps".text(requestProperties: [Accept: 'application/json;charset=utf-8', Authorization: "${token}"])
+		def json = apiUrl.text(requestProperties: [Accept: 'application/json;charset=utf-8', Authorization: "${token}"])
 		echo "Result: ${json}"
 
 		/*
