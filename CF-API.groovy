@@ -1,5 +1,6 @@
 //import groovy.json.JsonSlurper
-import groovyx.net.http.HTTPBuilder
+//import groovyx.net.http.HTTPBuilder
+@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7' )
 
 
 node {
