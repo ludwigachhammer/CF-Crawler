@@ -38,8 +38,9 @@ node {
                      .join('\n')  // Join back into a string separated by newline
 	    echo "token: ${token}"
 
-		//def json = "https://api.run.pivotal.io/v2/apps".toURL().getText(requestProperties: [Accept: 'application/json;charset=utf-8', Authorization: "${token}"])
-		//echo "Result: ${json}"
+		der apiURL = new URL("https://api.run.pivotal.io/v2/apps")
+		def json = "https://api.run.pivotal.io/v2/apps".text(requestProperties: [Accept: 'application/json;charset=utf-8', Authorization: "${token}"])
+		echo "Result: ${json}"
 
 		/*
 		def apiString = "https://api.run.pivotal.io/v2/apps"
@@ -47,7 +48,7 @@ node {
 		echo "Result: ${json}"
 		*/
 
-		getApps("${token}")
+		//getApps("${token}")
 
 
 		}
@@ -84,10 +85,12 @@ def make_get_request(String token) {
 }
 */
 
+/*
 def getApps(String token) {
 	def url = new URL('https://api.run.pivotal.io/v2/apps')
 	def connection = url.openConnection()
 	connection.setRequestMethod = 'GET'
+	myURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
 	connection.setRequestProperty("Accept", "application/json;charset=utf-8")
 	connection.setRequestProperty("Authorization", "${token}")
 	if (connection.responseCode == 200) {
@@ -99,4 +102,4 @@ def getApps(String token) {
 	} else {
 		println "fucked up"
 	}
-}
+}*/
