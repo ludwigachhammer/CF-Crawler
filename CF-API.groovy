@@ -40,7 +40,7 @@ node {
 		//echo "Result: ${json}"
 
 		def apiString = "https://api.run.pivotal.io/v2/apps"
-		def json = new JsonSlurper().parse(apiUrl)
+		def json = new JsonSlurper().parse(apiString)
 		echo "Result: ${json}"
 
 
