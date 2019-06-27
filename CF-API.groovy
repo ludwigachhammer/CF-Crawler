@@ -47,7 +47,7 @@ node {
 		echo "Result: ${json}"
 		*/
 
-		make_get_request("${token}")
+		getApps("${token}")
 
 
 		}
@@ -79,5 +79,23 @@ def make_get_request(String token) {
 		response.'404' = {
 			println 'Not found'
 		}
+	}
+}
+
+
+def getApps(String token) {
+	def url = new URL('https://api.run.pivotal.io/v2/apps')
+	def connection = url.openConnection()
+	connection.setRequestMethod = 'GET'
+	connection.setRequestProperty("Accept", "application/json;charset=utf-8")
+	connection.setRequestProperty("Authorization", "${token}")
+	if (connection.responseCode == 200) {
+		echo "${connection.content.text}"
+		println connection.content.text
+		println connection.contentType
+		println connection.lastModified
+		connection.headerFields.each { println "> ${it}" }
+	} else {
+		println "fucked up"
 	}
 }
