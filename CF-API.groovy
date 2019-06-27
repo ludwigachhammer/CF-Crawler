@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 node {
 
 
@@ -33,8 +35,17 @@ node {
                      .drop(2)     // Drop the first element
                      .join('\n')  // Join back into a string separated by newline
 	    echo "token: ${token}"
-	    def json = "https://api.run.pivotal.io/v2/apps".toURL().getText(requestProperties: [Accept: 'application/json;charset=utf-8', Authorization: "${token}"])
+
+		//def json = "https://api.run.pivotal.io/v2/apps".toURL().getText(requestProperties: [Accept: 'application/json;charset=utf-8', Authorization: "${token}"])
+		//echo "Result: ${json}"
+
+		def apiString = "https://api.run.pivotal.io/v2/apps"
+		def json = new JsonSlurper().parse(apiUrl)
 		echo "Result: ${json}"
+
+
+
+
 		}
   }	
 	/*
